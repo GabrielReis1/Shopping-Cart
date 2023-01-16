@@ -15,7 +15,7 @@ describe('Teste a função fetchProductsList', () => {
   it('fetch é chamado com o endpoint correto ao executar fetchProductsList', () => {
 
   });
-
+  //iniciando!!
   // it('...', () => {
   // });
 });
