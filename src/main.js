@@ -13,3 +13,11 @@ const createProducts = async () => {
   data.forEach((id) => products.appendChild(createProductElement(id)));
 };
 createProducts();
+
+const createLoading = () => {
+  const loading = document.createElement('span');
+  loading.className = 'loading';
+  loading.innerHTML = 'carregando...';
+  products.appendChild(loading);
+};
+createLoading();

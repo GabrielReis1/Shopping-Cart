@@ -327,3 +327,12 @@
     height: 630px;
   }
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  background: rgb(136, 244, 250);
+  font-size: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 25px;
+}
