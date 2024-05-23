@@ -93,6 +93,6 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull re
 
 **Autor**: Gabriel Reis
 
-**Contato**: gabriel.santos@outlook.com
+**Contato**: gabrielreis.santos@outlook.com
 
 ---
