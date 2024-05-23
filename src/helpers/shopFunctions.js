@@ -4,7 +4,7 @@ import { fetchProduct } from './fetchFunctions';
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
 
-// Fique a vontade para modificar o código já escrito e criar suas próprias funções!
+// Fique à vontade para modificar o código já escrito e criar suas próprias funções!
 
 /**
  * Função responsável por criar e retornar o elemento de imagem do produto.
@@ -42,6 +42,32 @@ export const getIdFromProduct = (product) => (
 );
 
 /**
+ * Função responsável por calcular e atualizar o valor total dos produtos no carrinho.
+ */
+const updateTotalPrice = () => {
+  const cartProducts = document.querySelectorAll('.cart__product');
+  let total = 0;
+
+  cartProducts.forEach((product) => {
+    const price = parseFloat(product.querySelector('.product__price__value').innerText);
+    total += price;
+  });
+
+  document.querySelector('.total-price').innerText = `R$ ${total.toFixed(2)}`;
+  localStorage.setItem('totalPrice', total.toFixed(2));
+};
+
+// Carregar o valor total do localStorage ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+  const totalPrice = localStorage.getItem('totalPrice');
+  if (totalPrice) {
+    document.querySelector('.total-price').innerText = `R$ ${totalPrice}`;
+  } else {
+    updateTotalPrice();
+  }
+});
+
+/**
  * Função que remove o produto do carrinho.
  * @param {Element} li - Elemento do produto a ser removido do carrinho.
  * @param {string} id - ID do produto a ser removido do carrinho.
@@ -49,6 +75,7 @@ export const getIdFromProduct = (product) => (
 const removeCartProduct = (li, id) => {
   li.remove();
   removeCartID(id);
+  updateTotalPrice(); // Atualizar o valor total ao remover um item
 };
 
 /**
@@ -89,6 +116,7 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
   li.appendChild(removeButton);
 
   li.addEventListener('click', () => removeCartProduct(li, id));
+
   return li;
 };
 
@@ -128,6 +156,7 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
     const cartProductsList = document.querySelector('.cart__products');
     const product = await fetchProduct(id);
     cartProductsList.appendChild(createCartProductElement(product));
+    updateTotalPrice(); // Atualizar o valor total após adicionar um item ao carrinho
   });
 
   section.appendChild(cartButton);
