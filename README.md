@@ -14,7 +14,6 @@ Este projeto consiste em um carrinho de compras totalmente dinâmico, onde os pr
 - Visualizar Carrinho: Exibe os produtos adicionados ao carrinho.
 - Calcular Total: Calcula o valor total dos produtos no carrinho.
 - Persistência de Dados: Armazena o estado do carrinho de compras no localStorage do navegador para que os dados persistam após recarregar a página.
-- bus
 - Busca na API de CEPs e exibe o endereço do CEP.
 
 ## Tecnologias Utilizadas
